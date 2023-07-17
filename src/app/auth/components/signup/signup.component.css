@@ -5,7 +5,7 @@
 }
 body {
     background: linear-gradient(45deg, #46fc8c, #3F5EFB);
-    height: 100vh;
+    height: 150vh;
     font-family: Arial, sans-serif;
     display: flex;
     align-items: center;
@@ -19,7 +19,7 @@ body {
   form {
     background: rgba(255, 255, 255, .3);
     padding: 3rem;
-    height: 320px;
+    height: 620px;
     border-radius: 20px;
     border-left: 1px solid rgba(255, 255, 255, .3);
     border-top: 1px solid rgba(255, 255, 255, .3);
@@ -56,7 +56,7 @@ body {
     text-shadow: none;
   }
   
-  input , select{
+  input,select{
     background: transparent;
     border: none;
     border-left: 1px solid rgba(255, 255, 255, .3);
@@ -73,11 +73,19 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
     transition: all .3s;
     margin-bottom: 2em;
-    margin-right: 10px; /* Ajoute une marge entre les inputs */
-
-      
+    margin-right: 10px; /* Ajoute une marge entre les inputs */    
   }
-  
+  /* Style pour les options */
+
+/* Style pour le sélecteur */
+select {
+  text-align: center;
+}
+
+/* Style pour le sélecteur */
+
+
+
   input:hover,
   input[type="email"]:focus,
   input[type="password"]:focus {

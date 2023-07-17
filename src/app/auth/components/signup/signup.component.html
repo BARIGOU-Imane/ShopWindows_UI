@@ -1,4 +1,8 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 <body>
+
     <div class="container">
         <form >
           <p>Welcome to Shopwindows</p>
@@ -6,22 +10,23 @@
           <input type="email" placeholder="Email"><br>
           <input type="password" placeholder="Password">
           <input type="text" placeholder="Address"><br>
-          <input type="text" placeholder="GLN">
-          <select [(ngModel)]="selectedOptionValue" (change)="updateSelectedOption()">
-            <option value="social-media">Social media</option>
-            <option value="rsGoogleBusiness">Google Business</option>
-            <option value="rsLinkedin">LinkedIn</option>
-            <option value="rsFacebook">Facebook</option>
-            <option value="rsInstagram">Instagram</option>
-          </select>
-          
-          <div *ngIf="selectedOptionValue !== 'social-media'">
-            <input type="text" [id]="selectedOptionValue" [placeholder]="selectedOptionPlaceholder">
+          <input type="text" placeholder="Linkedin">
+          <input type="text" placeholder="Facebook"><br>
+          <input type="text" placeholder="Instagram">
+          <input type="text" placeholder="Phone number"><br>
+          <input type="text" placeholder="Groupement">
+          <input type="text" placeholder="Opening hours"><br>
+          <div class="select-box">
+            <select name="roles" id="role-select"><br>
+              <option value="">--Please choose--</option>
+              <option value="Admin">Admin</option>
+              <option value="Pharmacy">Pharmacy</option>
+              <option value="Laboratory">Laboratory</option>
+          </select><br>
           </div>
-          <br>
-
-          <input type="button" value="Log in">
-          <a routerLink="/signup">Sign up</a>
+          <i class="fa-solid fa-chevron-down"></i>
+          <input type="button" value="Submit"><br>
+          <a routerLink="/login">Log in</a>
         </form>
       
         <div class="drop drop-1"></div>
