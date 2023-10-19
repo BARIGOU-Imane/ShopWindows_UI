@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  </head>
+<body width="100%">
+  <div class="container">
+    <nav>
+      <div class="navbar">
+        <div class="logo">
+          <img src="" alt="">
+          <h1>ShopWindows</h1>
+        </div>
+        <ul>
+          <li><a routerLink="/pharma/pharmaDashboard">
+            <i class="fas fa-tachometer-alt"></i>
+            Dashboard
+          </a>
+          </li>
+          <li><a (click)="goToProfile()">
+            <i class="fas fa-user"></i>
+            Profile
+          </a>
+          </li>
+          <li><a href="#">
+            <i class="fas fa-hospital-symbol"></i> <!-- Represents adding, deleting, and modifying a product -->
+            Pharmacy's offers
+          </a>
+          </li>
+          <li><a href="#">
+            <i class="fas fa-bell"></i> <!-- Notification icon -->
+            Notifications
+          </a>
+          </li>
+          <li><a href="#">
+            <i class="far fa-calendar-check"></i> <!-- Regular (outline) style icon -->
+            Reservations
+          </a>
+          </li>
+          <li><a href="#">
+            <i class="fas fa-shopping-cart"></i>
+            Cart
+          </a>
+          </li>
+          <li><a (click)="logout()" class="logout">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+          </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="main">
+      <div class="main-top">
+        <p>Explore the universe Pharmacy!</p>
+      </div>
+      <div class="main-body">
+        <h1>Newest Marketing campaigns Discoveries</h1>
+        <div class="record-header">
+          <div class="browse">
+              <input type="search" placeholder="Start:  yyyy-MM-dd" class="record-search" [(ngModel)]="searchStartDate">
+              <input type="search" placeholder="End:  yyyy-MM-dd" class="record-search" [(ngModel)]="searchEndDate">
+              <input type="search" [placeholder]="getPlaceholder()" class="record-search" [(ngModel)]="searchInput" (input)="onSearchChange()">
+              <select  [(ngModel)]="searchCriteria" (change)="onSearchChange()">
+                  <option value="All">All</option>
+                  <option value="Name">Name</option>
+                  <option value="Brand">Brand</option>
+                  <option value="Type">Type</option>
+                  <option value="Season">Season</option>
+                  <option value="Date">Date</option>
+                  <option value="Period">Period</option>
+              </select>
+              <!-- <select class="filter">
+                <option>Langue</option>
+              </select> -->
+          </div>
+      </div>
+      <!-- <div class="search_bar">
+        <input type="search" placeholder="Search here...">
+        <select name="" id="">
+          <option>Nom</option>
+          <option>Marque</option>
+          <option>Produit</option>
+          <option>Période (été, hiver)</option>
+          <option> Durée (ex 15j)</option>
+        </select>
+
+      </div> -->
+
+      <!-- <div class="tags_bar">
+        <div class="tag">
+          <i class="fas fa-times"></i>
+          <span>Nom</span>
+        </div>
+        <div class="tag">
+          <i class="fas fa-times"></i>
+          <span>Marque</span>
+        </div>
+        <div class="tag">
+          <i class="fas fa-times"></i>
+          <span>Produit</span>
+        </div>
+        <div class="tag">
+          <i class="fas fa-times"></i>
+          <span>Période</span>
+        </div>
+        <div class="tag">
+          <i class="fas fa-times"></i>
+          <span>Durée</span>
+        </div>
+      </div> -->
+
+      <!-- <div class="row">
+        <p>There are more than <span>400</span> Jobs</p>
+        <a href="#">See all</a>
+      </div> -->
+
+      <div class="job_card" *ngFor="let campaign of campaigns">
+        <div class="job_details">
+          <div class="img">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <div class="text">
+            <h2>{{ campaign.nameComp }}</h2>
+            <div class="span-elm">
+              <span class="left"><strong>Brand:</strong> {{ campaign.brand }}</span>
+              <span class="right"><strong>Season:</strong> {{ campaign.season }}</span>
+            </div>
+            <div class="span-elm">
+              <span class="left">{{ campaign.startDate }} -- {{ campaign.endDate }}</span>
+              <span class="right"> <strong>Period: </strong>{{ campaign.period }}</span>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="job_salary">
+          <h4>$6.7 - $12.5k /yr</h4>
+          <span>1 days ago</span>
+        </div> -->
+      </div>
+      
+    </div>
+    </section>
+  </div>
+
+</body>
+</html>

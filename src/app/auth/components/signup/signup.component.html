@@ -1,0 +1,62 @@
+<body>
+
+    <div class="container">
+        <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+          <p>Welcome to Shopwindows</p>
+          <ng-container *ngIf="showFirstPart">
+            <!-- First Part of the Form -->
+            <input type="text" placeholder="Username" name="username" id="username" [(ngModel)]="form.username" #username="ngModel" required>
+            <input type="email" placeholder="Email" name="email" id="email" [(ngModel)]="form.email" #email="ngModel" required><br>
+            <input type="password" placeholder="Password" name="password" id="password" [(ngModel)]="form.password" #password="ngModel" required>
+            <input type="text" placeholder="Address" name="adresseCanton" id="adresseCanton" [(ngModel)]="form.adresseCanton" #adresseCanton="ngModel" required><br>
+            <input type="text" placeholder="Google Business" name="rsGoogleBusiness" id="rsGoogleBusiness" [(ngModel)]="form.rsGoogleBusiness" #rsGoogleBusiness="ngModel">
+            <input type="text" placeholder="Linkedin" name="rsLinkedin" id="rsLinkedin" [(ngModel)]="form.rsLinkedin" #rsLinkedin="ngModel"><br>
+            <input type="text" placeholder="Facebook" name="rsFacebook" id="rsFacebook" [(ngModel)]="form.rsFacebook" #rsFacebook="ngModel">
+            <input type="text" placeholder="Instagram" name="rsInstagram" id="rsInstagram" [(ngModel)]="form.rsInstagram" #rsInstagram="ngModel"><br>
+            <input type="text" placeholder="Phone number" name="numeroTelephone" id="numeroTelephone" [(ngModel)]="form.numeroTelephone" #numeroTelephone="ngModel" required>
+            <input type="text" placeholder="Personal Gln" name="persoGln" id="persoGln" [(ngModel)]="form.persoGln" #persoGln="ngModel" required><br>
+            <div class="input-container">
+              <input type="text" placeholder="service Gln" name="pharmaLaboGln" id="pharmaLaboGln" [(ngModel)]="form.pharmaLaboGln" #pharmaLaboGln="ngModel" required>
+              <div class="select-box">
+                <select name="role" id="role" [(ngModel)]="form.role" required>
+                  <option value="" disabled>--Please choose--</option>
+                  <option value="Pharmacy">Pharmacy</option>
+                  <option value="Laboratory">Laboratory</option>
+                </select>
+              </div>
+            </div><br>
+
+            <input type="button" value="Next" (click)="showSecondPart()"><br>
+          </ng-container>
+
+          <ng-container *ngIf="!showFirstPart">  
+            <!-- Second Part of the Form -->
+            <input type="text" placeholder="Service name" name="pharmaLaboName" id="pharmaLaboName" [(ngModel)]="form.pharmaLaboName" #pharmaLaboName="ngModel" required>
+            <input type="text" placeholder="Service Adresse" name="pharmaLaboAdresseCanton" id="pharmaLaboAdresseCanton" [(ngModel)]="form.pharmaLaboAdresseCanton" #pharmaLaboAdresseCanton="ngModel" required><br>
+            <input type="text" placeholder="Service GoogleBusiness" name="pharmaLaboRsGoogleBusiness" id="pharmaLaboRsGoogleBusiness" [(ngModel)]="form.pharmaLaboRsGoogleBusiness" #pharmaLaboRsGoogleBusiness="ngModel" required>
+            <input type="text" placeholder="Service Linkedin" name="pharmaLaboRsLinkedin" id="pharmaLaboRsLinkedin" [(ngModel)]="form.pharmaLaboRsLinkedin" #pharmaLaboRsLinkedin="ngModel" required><br>
+            <input type="text" placeholder="Service Facebook" name="pharmaLaboRsFacebook" id="pharmaLaboRsFacebook" [(ngModel)]="form.pharmaLaboRsFacebook" #pharmaLaboRsFacebook="ngModel">
+            <input type="text" placeholder="Service Instagram" name="pharmaLaboRsInstagram" id="pharmaLaboRsInstagram" [(ngModel)]="form.pharmaLaboRsInstagram" #pharmaLaboRsInstagram="ngModel"><br>
+            <input type="text" placeholder="Service Phone number" name="pharmaLaboNumeroTelephone" id="pharmaLaboNumeroTelephone" [(ngModel)]="form.pharmaLaboNumeroTelephone" #pharmaLaboNumeroTelephone="ngModel" required>
+            <input type="text" placeholder="Groupement" name="pharmaLaboGroupement" id="pharmaLaboGroupement" [(ngModel)]="form.pharmaLaboGroupement" #pharmaLaboGroupement="ngModel" required><br>
+            <input type="text" placeholder="Opening houres" name="pharmaLaboHoraireOuverture" id="pharmaLaboHoraireOuverture" [(ngModel)]="form.pharmaLaboHoraireOuverture" #pharmaLaboHoraireOuverture="ngModel" required><br>
+            <input type="button" value="Submit" (click)="onSubmit()"><br>
+            <a class="button-link" (click)="showFirstPartAgain()">Previous</a>
+            <a routerLink="/login">Log in</a>
+            <div *ngIf="successMessage" class="success-message">
+              {{ successMessage }}
+            </div>
+          </ng-container>
+
+
+        </form>
+       
+
+        <div class="drop drop-1"></div>
+        <div class="drop drop-2"></div>
+        <div class="drop drop-3"></div>
+        <div class="drop drop-4"></div>
+        <div class="drop drop-5"></div>
+      </div>
+      
+</body>

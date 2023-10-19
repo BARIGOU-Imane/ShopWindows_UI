@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div id="logo">
+        <h1 class="logo">ShopWindows</h1>
+        <div class="CTA">
+          <h1>Admin</h1>
+        </div>
+      </div>
+
+      <div class="leftbox">
+        <nav>
+          <a href="#" >
+            <i class="fas fa-tachometer-alt"></i>
+          </a>
+          <a routerLink="/admin/adminProfile" class="active">
+            <i class="fas fa-user"></i>
+          </a>
+          <a href="#">
+            <i class="fas fa-edit"></i> <!-- Represents adding, deleting, and modifying a product -->
+          </a>
+          <a routerLink="/admin/authorizeUsers">
+            <i class="fas fa-check"></i> 
+          </a>
+          <a href="#">
+            <i class="fas fa-bell"></i> <!-- Regular (outline) style icon -->
+          </a>
+          <a href="#">
+            <i class="far fa-calendar-check"></i>
+          </a>
+          <a (click)="logout()" class="logout">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+          </a>
+          
+        </nav>
+      </div>
+
+      <div class="rightbox">
+        <div class="profile">
+          <h1>Personal Info</h1>
+          <h2>UserName</h2>
+          <p>{{ jwtResponse?.username }} <button class="btn">update</button></p>
+          <h2>Email </h2>
+          <p>{{ jwtResponse?.email }}<button class="btn">update</button></p>
+          <h2>Password</h2>
+          <p>*************<button class="btn">update</button></p>
+          <h2>Address </h2>
+          <p>{{ jwtResponse?.adresseCanton }}<button class="btn">update</button></p>
+          <h2>Google Business </h2>
+          <p>{{ jwtResponse?.rsGoogleBusiness }}<button class="btn">update</button></p>
+          <h2>Linkedin </h2>
+          <p>{{ jwtResponse?.rsLinkedin }}<button class="btn">update</button></p>
+          <h2>Facebook </h2>
+          <p>{{ jwtResponse?.rsFacebook }}<button class="btn">update</button></p>
+          <h2>Instagram </h2>
+          <p>{{ jwtResponse?.rsInstagram }}<button class="btn">update</button></p>
+          <h2>Phone number </h2>
+          <p>{{ jwtResponse?.numeroTelephone }}<button class="btn">update</button></p>
+          <h2>Groupement </h2>
+          <p>{{ jwtResponse?.pharmaLaboGroupement }}<button class="btn">update</button></p>
+          <h2>GLN </h2>
+          <p>{{ jwtResponse?.pharmaLaboGln }}<button class="btn">update</button></p>
+          <h2>Opening hours </h2>
+          <p>{{ jwtResponse?.pharmaLaboHoraireOuverture }}<button class="btn">update</button></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

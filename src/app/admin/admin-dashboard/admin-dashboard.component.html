@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  </head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="navbar">
+        <div class="logo">
+          <img src="" alt="">
+          <h1>ShopWindows</h1>
+        </div>
+        <ul>
+          <li><a routerLink="/admin/adminDashboard">
+            <i class="fas fa-tachometer-alt"></i>
+            Dashboard
+          </a>
+          </li>
+          <li><a (click)="goToProfile()">
+            <i class="fas fa-user"></i>
+            Profile
+          </a>
+          </li>
+          <li><a href="#">
+            <i class="fas fa-edit"></i> <!-- Represents adding, deleting, and modifying a product -->
+            Pharma/Labo
+          </a>
+          <li><a routerLink="/admin/authorizeUsers">
+            <i class="fas fa-check"></i> <!-- Represents adding, deleting, and modifying a product -->
+            Authorize new user
+          </a>
+          </li>
+          <li><a href="#">
+            <i class="fas fa-bell"></i> <!-- Notification icon -->
+            Notifications
+          </a>
+          </li>
+          <!-- <li><a href="#">
+            <i class="far fa-calendar-check"></i>  Regular (outline) style icon 
+            Reservations
+          </a>
+          </li>
+          <li><a href="#">
+            <i class="fas fa-shopping-cart"></i>
+            Cart
+          </a>
+          </li> -->
+          <li><a (click)="logout()" class="logout">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+          </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="main">
+      <div class="main-top">
+        <p>Explore the universe Admin!</p>
+      </div>
+      <div class="main-body">
+        <h1>Newest Discoveries</h1>
+      </div>
+    </section>
+  </div>
+      
+
+</body>
+</html>

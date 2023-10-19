@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+/>
+    
+
+</head>
+<body>
+    <div class="leftbox">
+        <nav>
+          <a routerLink="/labo/dashboard">
+            <i class="fas fa-tachometer-alt"></i>
+          </a>
+          <a routerLink="/labo/laboProfile">
+            <i class="fas fa-user"></i>
+          </a>
+          <a href="#">
+            <i class="fas fa-bullhorn"></i><!-- Represents adding, deleting, and modifying a product -->
+          </a>
+          <a routerLink="/admin/authorizeUsers">
+            <i class="fas fa-bell"></i> 
+          </a>
+          <a href="#">
+            <i class="far fa-calendar-check"></i> <!-- Regular (outline) style icon -->
+          </a>
+          <a href="#">
+            <i class="fas fa-shopping-cart"></i>
+          </a>
+          <a (click)="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
+          
+        </nav>
+      </div>
+    <div class="center-container">
+        <div class="main-content">
+            <main>
+                <input type="checkbox" id="menu-toggle">
+                <div class="page-header">
+                    <h1>Marketing campaigns</h1>
+                    <small>Dashboard / Marketing campaigns</small>
+                </div>
+                
+                <div class="page-content">
+                    <div class="records table-responsive">
+
+                        <div class="record-header">
+                            <div class="add">
+                                <button routerLink="/labo/markcomp/addcomp">Add M.Camp</button>
+                            </div>
+
+                            <div class="browse">
+                                <input type="search" placeholder="Start:  yyyy-MM-dd" class="record-search" [(ngModel)]="searchStartDate">
+                                <input type="search" placeholder="End:  yyyy-MM-dd" class="record-search" [(ngModel)]="searchEndDate">
+                                <input type="search" [placeholder]="getPlaceholder()" class="record-search" [(ngModel)]="searchInput" (input)="onSearchChange()">
+                                <select  [(ngModel)]="searchCriteria" (change)="onSearchChange()">
+                                    <option value="All">All</option>
+                                    <option value="Name">Name</option>
+                                    <option value="Brand">Brand</option>
+                                    <option value="Type">Type</option>
+                                    <option value="Season">Season</option>
+                                    <option value="Date">Date</option>
+                                    <option value="Period">Period</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            
+                            
+                                <table width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th> M. CAMPAIGNS</th>
+                                            <th> TYPE</th>
+                                            <th> DATE & PERIOD</th>
+                                            <th> SEASON</th>
+                                            <th> ACTIONS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let campaign of campaigns">
+                                            <td>{{ campaign.id }}</td>
+                                            <td>
+                                                <div class="client">
+                                                    <!-- <div class="client-img bg-img" style="background-image: url(img/3.jpeg)"></div> -->
+                                                    <div class="client-img bg-img" ></div>
+                                                    <div class="client-info">
+                                                        <h4>{{ campaign.nameComp }}</h4>
+                                                        <small>{{ campaign.brand }}</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{campaign.typeComp}}
+                                            </td>
+                                            <td>
+                                                <div class="client-info">
+                                                    <h4> {{ campaign.startDate }} / {{ campaign.endDate }}</h4>
+                                                    <small>{{campaign.period}}</small>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{ campaign.season }}
+                                            </td>
+                                            <td>
+                                                <div class="actions">
+                                                    <a (click)="showCard(campaign)">
+                                                        <span class="las la-eye"></span>
+                                                    </a>
+                                                    <a [routerLink]="['/labo/markcomp/updatecomp']" [queryParams]="{ id: campaign.id }"><i class="las la-edit"></i></a>
+                                                    <a (click)="showPopup = true"><i class="las la-trash-alt"></i></a>
+                                                </div>
+                                            </td>
+                                            <div class="cd-popup" *ngIf="showPopup" role="alert">
+                                                <div class="cd-popup-container">
+                                                <p>Are you sure you want to delete {{ campaign.nameComp }}?</p>
+                                                <ul class="cd-buttons">
+                                                    <li><a (click)="deleteComp(campaign.id)">Yes</a></li>
+                                                    <li><a (click)="showPopup = false">No</a></li>
+                                                </ul>
+                                                <a routerLink="/labo/markcomp/dashcomp" class="cd-popup-close close-replace" (click)="showPopup = false">Close</a>
+                                                </div>
+                                            </div>
+                                        </tr>
+        
+                                        
+                                    </tbody>
+                                </table>
+                                <div [hidden]="!isCardVisible" class="card-overlay" *ngIf="selectedCampaign">
+                                    <div class="cont">
+                                        <h1> {{ selectedCampaign.nameComp }}</h1>
+                                        <div class="wrapper">
+                                        <div class="banner-image"> </div>
+                                            <p><strong>Brand:</strong> {{ selectedCampaign.brand }}</p>
+                                            <p><strong>Type:</strong> {{ selectedCampaign.typeComp }}</p>
+                                            <p><strong>Season:</strong> {{ selectedCampaign.season }}</p>
+                                            <p> {{ selectedCampaign.startDate }} /{{ selectedCampaign.endDate }}<br>
+                                                {{ selectedCampaign.period }}
+                                            </p>
+                                        </div>
+                                        <div class="button-wrapper"> 
+                                        <button class="btn outline" (click)="hideCard()">Hide</button>
+                                        </div>
+                                        
+                                    </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                
+                </div>
+                
+            </main>
+            
+        </div>
+    </div>
+       
+
+</body>
+</html>

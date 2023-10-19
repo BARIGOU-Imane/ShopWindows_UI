@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" title="Coding design">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+</head>
+
+<body>
+    <div class="leftbox">
+      <nav>
+        <a routerLink="/admin/adminDashboard">
+          <i class="fas fa-tachometer-alt"></i>
+        </a>
+        <a routerLink="/admin/adminProfile">
+          <i class="fas fa-user"></i>
+        </a>
+        <a href="#">
+          <i class="fas fa-edit"></i> <!-- Represents adding, deleting, and modifying a product -->
+        </a>
+        <a routerLink="/admin/authorizeUsers">
+          <i class="fas fa-check"></i> 
+        </a>
+        <a href="#">
+          <i class="fas fa-bell"></i> <!-- Regular (outline) style icon -->
+        </a>
+        <a href="#">
+          <i class="far fa-calendar-check"></i>
+        </a>
+        <a (click)="logout()">
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
+        
+      </nav>
+    </div>
+
+    <main class="table">
+        <section class="table__header">
+            <h1>List Invalidated Users</h1>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th> Id </th>
+                        <th> Username </th>
+                        <th> email </th>
+                        <th> personal gln </th>
+                        <th> service gln </th>
+                        <th> Details </th>
+                        <th> validate </th>
+                        <th> disprove </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let user of noneApprovedUsers">
+                      <td> {{ user.id }} </td>
+                      <td> {{ user.username }}</td>
+                      <td> {{ user.email }} </td>
+                      <td> {{ user.persoGln }} </td> 
+                      <td> {{ user.pharmaLaboGln }} </td> 
+                      <td> <button class="btn" (click)="showUserDetails(user.id)">Check</button> </td>
+                      <td><button class="btn-accept" (click)="showConfirmation = { action: 'accept', userId: user.id }">accepte</button></td>
+                      <td><button class="btn-deny" (click)="showConfirmation = { action: 'deny', userId: user.id }">deny</button></td>
+                      <div class="custom-validate-modal" *ngIf="showConfirmation">
+                        <div class="modal-validate-content">
+                          <h3>Confirmation</h3>
+                          <p>Are you sure you want to {{ showConfirmation.action }}?</p>
+                          <div class="modal-validate-actions">
+                            <button class="btn-confirm" (click)="onConfirm()">Confirm</button>
+                            <button class="btn-cancel" (click)="onCancel()">Cancel</button>
+                          </div>
+                        </div>
+                      </div>
+                    </tr>
+                    <div id="userModal" class="modal">
+                      <div class="modal-content">
+                        <span class="close" (click)="closeUserModal()">&times;</span>
+                        <h1>User Details</h1>
+                        <h2><span>Username:</span> {{ userDetails?.username }}</h2>
+                        <h2><span>Email:</span> {{ userDetails?.email }}</h2>
+                        <h2><span>Address:</span>{{ userDetails?.adresseCanton }}</h2>
+                        <h2><span>Personal Gln:</span> {{ userDetails?.persoGln }}</h2>
+                        <h2><span>Service Gln:</span> {{ userDetails?.pharmaLaboGln }}</h2>
+                        <h2><span>Groupement:</span> {{ userDetails?.pharmaLaboGroupement }}</h2>
+                        <h2><span>Opening houres:</span> {{ userDetails?.pharmaLaboHoraireOuverture }}</h2>
+                        <h2><span>Address:</span> {{ userDetails?.adresseCanton }}</h2>
+                        <h2><span>Google Business:</span> {{ userDetails?.rsGoogleBusiness }}</h2>
+                        <h2><span>Linkedin:</span> {{ userDetails?.rsLinkedin }}</h2>
+                        <h2><span>Facebook:</span> {{ userDetails?.rsFacebook }}</h2>
+                        <h2><span>Instagram:</span> {{ userDetails?.rsInstagram }}</h2>
+                        <h2><span>Phone number:</span> {{ userDetails?.numeroTelephone }}</h2>
+                        <h2><span>Service name:</span> {{ userDetails?.pharmaLaboName }}</h2>
+                        <h2><span>Service Address:</span> {{ userDetails?.pharmaLaboAdresseCanton }}</h2>
+                        <h2><span>Service Google Business:</span> {{ userDetails?.pharmaLaboRsGoogleBusiness }}</h2>
+                        <h2><span>Service Linkedin:</span> {{ userDetails?.pharmaLaboRsLinkedin }}</h2>
+                        <h2><span>Service Facebook:</span> {{ userDetails?.pharmaLaboRsFacebook }}</h2>
+                        <h2><span>Service Instagram:</span> {{ userDetails?.pharmaLaboRsInstagram }}</h2>
+                        <h2><span>Service Phone number:</span> {{ userDetails?.pharmaLaboNumeroTelephone }}</h2>
+                        <!-- Ajoutez les autres détails de l'utilisateur ici -->
+                      </div>
+                    </div>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+
+</html>
